@@ -1,0 +1,84 @@
+:root{
+  color-scheme: light dark;
+  --bg:#fff; --fg:#0f172a; --muted:#64748b; --line:#e2e8f0; --surface:#f8fafc;
+  --accent:#2563eb; --accent-fg:#fff; --ok:#047857;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#0b1220;--fg:#e2e8f0;--muted:#94a3b8;--line:#1e293b;--surface:#111c33;--accent:#3b82f6;--ok:#34d399}
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.65}
+.wrap{max-width:720px;margin:0 auto;padding:0 22px}
+a{color:var(--accent)}
+header.site{border-bottom:1px solid var(--line);padding:16px 0}
+header.site .wrap{display:flex;align-items:center;gap:10px}
+header.site strong{font-size:17px}
+header.site nav{margin-left:auto;display:flex;gap:18px;font-size:15px}
+header.site nav a{color:var(--muted);text-decoration:none}
+header.site nav a:hover{color:var(--fg)}
+.logo{width:26px;height:26px;border-radius:7px;flex:none}
+h1{font-size:clamp(30px,5.2vw,44px);line-height:1.12;letter-spacing:-.03em;margin:0 0 14px}
+h2{font-size:23px;letter-spacing:-.015em;margin:44px 0 12px}
+h3{font-size:17px;margin:26px 0 6px}
+.lede{font-size:20px;color:var(--muted);margin:0 0 26px}
+.hero{padding:60px 0 10px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 8px}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);text-decoration:none;
+  padding:13px 22px;border-radius:9px;font-weight:600}
+.btn.alt{background:var(--surface);color:var(--fg);border:1px solid var(--line)}
+.fineprint{color:var(--muted);font-size:15px;margin:0}
+figure{margin:32px 0}
+figure img{width:100%;border:1px solid var(--line);border-radius:12px;display:block}
+figcaption{color:var(--muted);font-size:14px;margin-top:8px;text-align:center}
+ol.steps{counter-reset:s;list-style:none;padding:0;margin:0}
+ol.steps li{counter-increment:s;position:relative;padding:0 0 20px 44px}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:-1px;width:29px;height:29px;
+  border-radius:50%;background:var(--accent);color:var(--accent-fg);display:grid;place-items:center;
+  font-weight:700;font-size:14px}
+ol.steps strong{display:block}
+ol.steps span{color:var(--muted)}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:16px}
+th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-size:14px;font-weight:600}
+.prices{display:flex;gap:16px;flex-wrap:wrap;margin:18px 0}
+.price{flex:1 1 250px;border:1px solid var(--line);border-radius:12px;padding:20px 22px;background:var(--surface)}
+.price.hi{border-color:var(--accent)}
+.price .tier{font-size:13px;font-weight:700;letter-spacing:.08em;color:var(--muted)}
+.price.hi .tier{color:var(--accent)}
+.price .amt{font-size:36px;font-weight:800;margin:6px 0 10px;letter-spacing:-.02em}
+.price .amt small{font-size:16px;font-weight:600;color:var(--muted)}
+.price ul{margin:0;padding-left:18px;color:var(--muted)}
+.note{border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;
+  padding:14px 16px;background:var(--surface);margin:20px 0}
+.note p{margin:0}
+details{border-bottom:1px solid var(--line);padding:13px 0}
+summary{cursor:pointer;font-weight:600}
+details p{margin:9px 0 0;color:var(--muted)}
+footer.site{border-top:1px solid var(--line);margin-top:60px;padding:26px 0 50px;color:var(--muted);font-size:15px}
+footer.site nav{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:10px}
+.legal{max-width:720px}
+.legal h2{font-size:20px}
+.legal p,.legal li{color:var(--fg)}
+.placeholder{background:color-mix(in srgb,var(--accent) 14%,transparent);
+  border-radius:4px;padding:0 4px;font-family:ui-monospace,monospace;font-size:.9em}
+
+/* A store listing that does not exist yet: visibly present, clearly not clickable. */
+.btn.disabled{background:var(--surface);color:var(--muted);border:1px dashed var(--line);cursor:default}
+
+/* Header brand as a single link back to the landing page. */
+header.site .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+
+/* Shown on a legal page while some details are still bracketed. */
+.pending{border:1px solid var(--line);border-left:3px solid var(--muted);border-radius:8px;
+  padding:12px 14px;background:var(--surface);color:var(--muted);font-size:15px;margin:0 0 24px}
+
+/* The three things the product deliberately refuses to do. */
+ul.nots{list-style:none;padding:0;margin:18px 0}
+ul.nots li{position:relative;padding:0 0 14px 30px;color:var(--muted)}
+ul.nots li::before{content:"—";position:absolute;left:6px;top:0;color:var(--accent);font-weight:700}
+ul.nots strong{color:var(--fg)}
+
+/* Legal and help pages have no hero, so they need their own top breathing room. */
+.wrap.legal{padding-top:44px}
+.wrap.legal h1{margin-bottom:10px}

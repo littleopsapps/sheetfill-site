@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SheetFill — Fill web forms from a spreadsheet</title>
+<meta name="description" content="Paste your spreadsheet once, then fill the form one row per click. No copy-paste, no account, nothing leaves your computer.">
+<meta property="og:title" content="SheetFill — Fill web forms from a spreadsheet">
+<meta property="og:description" content="Paste your spreadsheet once, then fill the form one row per click. No copy-paste, no account, nothing leaves your computer.">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAA40lEQVR42u2awQ3DIAxFGSUX3xmFHTxQRspAPjACVatEbaUkNKRV/OlH8i1I/0nfNsGEsLFELYraKGqTqJWLYpo1xPDpErXhYtF7MENNfBK17FD8EndtaU98AYm0ZpsMBJDf7OTU89WceK02BTRimMsUKsCIap+njYDFP4IABCBA5YNvLAJ4BzgD6QagFcJFEp+xmzuAoxBuymgrhKs+0ALhrowe3euyDxCgKwvBJzHL6D80sp8eJeAPczxO84+MtxIEIED3APDX6/ADDuwRE/yQr4sxK/ygu4unBl089kB8bnMDmprJBxZJnngAAAAASUVORK5CYII=">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href=""><img class="logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAA40lEQVR42u2awQ3DIAxFGSUX3xmFHTxQRspAPjACVatEbaUkNKRV/OlH8i1I/0nfNsGEsLFELYraKGqTqJWLYpo1xPDpErXhYtF7MENNfBK17FD8EndtaU98AYm0ZpsMBJDf7OTU89WceK02BTRimMsUKsCIap+njYDFP4IABCBA5YNvLAJ4BzgD6QagFcJFEp+xmzuAoxBuymgrhKs+0ALhrowe3euyDxCgKwvBJzHL6D80sp8eJeAPczxO84+MtxIEIED3APDX6/ADDuwRE/yQr4sxK/ygu4unBl089kB8bnMDmprJBxZJnngAAAAASUVORK5CYII=" alt=""><strong>SheetFill</strong></a>
+  <nav>
+    <a href="">Home</a>
+    <a href="support/">Help</a>
+    <a href="privacy/">Privacy</a>
+    <a href="terms/">Terms</a>
+  </nav>
+</div></header>
+<section class="hero"><div class="wrap">
+  <h1>Fill web forms from spreadsheet rows, one row at a time.</h1>
+  <p class="lede">You have a spreadsheet. They have a form. You have eighty rows. SheetFill stops you
+    alt-tabbing between the two for the next forty minutes.</p>
+  <div class="cta">
+    <span class="btn disabled" aria-disabled="true">Edge — coming soon</span>
+    <span class="btn alt disabled" aria-disabled="true">Firefox — coming soon</span>
+  </div>
+  <p class="fineprint">A browser extension for Microsoft Edge and Firefox, coming soon to both add-on
+    stores. Free for 15 rows a month. No account, no sign-up.</p>
+</div></section>
+
+<div class="wrap">
+  <figure>
+    <img src="shots/02-after.png" alt="A spreadsheet panel beside a web form, with the first row's values filled into every field.">
+    <figcaption>One click fills every mapped field — text, dropdowns and notes.</figcaption>
+  </figure>
+
+  <h2>What you do now</h2>
+  <p>Switch to the spreadsheet. Copy a cell. Switch back. Find the right field. Paste. Repeat for the
+    other seven fields. Submit. Switch back. Find your place again. Do it seventy-nine more times,
+    hoping you never once paste the wrong cell into the wrong box.</p>
+
+  <h2>What you do with SheetFill</h2>
+  <ol class="steps">
+    <li><strong>Paste your rows</strong><span>Copy them from Excel, Google Sheets or Numbers. That's the whole import.</span></li>
+    <li><strong>Teach the form once</strong><span>Click a field on the page, choose which column fills it. SheetFill remembers it for next time.</span></li>
+    <li><strong>Click “Fill next row”</strong><span>Check the values, submit the form yourself, click again for row 2. SheetFill keeps your place.</span></li>
+  </ol>
+
+  <figure>
+    <img src="shots/03-teach.png" alt="The teach flow: a hint bar on the page and a column chooser in the SheetFill panel.">
+    <figcaption>Teaching is clicking. No selectors, no scripts, no setup wizard.</figcaption>
+  </figure>
+
+  <h2>Before and after</h2>
+  <table>
+    <tr><th>Per record</th><th>By hand</th><th>With SheetFill</th></tr>
+    <tr><td>Window switches</td><td>8</td><td>0</td></tr>
+    <tr><td>Copy / paste actions</td><td>16</td><td>0</td></tr>
+    <tr><td>Clicks</td><td>~20</td><td>1</td></tr>
+    <tr><td>Chances to paste the wrong cell</td><td>8</td><td>0</td></tr>
+  </table>
+  <p class="fineprint">Based on an eight-field form. Your form may be worse.</p>
+
+  <h2>Your spreadsheet stays on your computer</h2>
+  <div class="note"><p><strong>There is no server.</strong> SheetFill has no account, no sign-in and
+    nothing to sign up for. What you paste is stored in your own browser and is never uploaded. The
+    only thing SheetFill ever sends over the internet is a license key, to check that it is valid.</p></div>
+  <p>Password fields are excluded in code and can never be filled. You can erase everything SheetFill
+    holds with one click in Settings.</p>
+
+  <h2>What SheetFill deliberately will not do</h2>
+  <p>These are permanent limits, not missing features. They are what keep you in control of every
+    record you create, and what keep SheetFill a tool rather than a bot.</p>
+  <ul class="nots">
+    <li><strong>It never submits a form.</strong> SheetFill fills the fields. You look at them and
+      press submit yourself — every row, every time.</li>
+    <li><strong>It does not handle CAPTCHAs.</strong> There is no CAPTCHA solving, no OTP handling,
+      and no attempt to work around any anti-automation measure. There never will be.</li>
+    <li><strong>It does not run unattended bulk automation.</strong> There is no mode that loops
+      through your rows on its own. Each row needs a separate click from you.</li>
+  </ul>
+
+  <h2>Pricing</h2>
+  <div class="prices">
+    <div class="price">
+      <div class="tier">FREE</div>
+      <div class="amt">$0</div>
+      <ul><li>15 filled rows per month</li><li>Unlimited saved forms</li><li>Every feature</li></ul>
+    </div>
+    <div class="price hi">
+      <div class="tier">PRO</div>
+      <div class="amt">$9<small>/month</small></div>
+      <ul><li>Unlimited rows (fair use 5,000/month)</li><li>$69/year saves 36%</li><li>Cancel any time</li></ul>
+    </div>
+  </div>
+  <p class="fineprint">30-day refund, no questions asked. Cancelling never deletes your spreadsheets
+    or saved forms.</p>
+
+  <h2>Questions</h2>
+  <details><summary>Which browsers does it work in?</summary>
+    <p>Microsoft Edge and Firefox. It is built on standard Manifest V3, so it runs anywhere that does.</p></details>
+  <details><summary>Do I need to know anything technical?</summary>
+    <p>No. If you can click a field and pick an item from a list, you can use it. There are no
+      selectors, scripts, macros or settings to configure.</p></details>
+  <details><summary>What happens if the website changes?</summary>
+    <p>SheetFill identifies fields by several signals at once, so small changes usually do not break
+      anything. If a field genuinely cannot be found, SheetFill names it and asks you to re-teach it —
+      it never quietly skips a field or guesses.</p></details>
+  <details><summary>Can it fill dropdowns?</summary>
+    <p>Yes — matched on the visible text, so “United Kingdom” in your spreadsheet finds “United
+      Kingdom” in the list. Checkboxes understand Yes/No, True/False, 1/0 and X.</p></details>
+  <details><summary>What if I map a column wrong?</summary>
+    <p>Click “Undo last fill”. The previous values come back and the row counter steps back. Then
+      remove the wrong mapping and teach it again.</p></details>
+  <details><summary>Is my data sent anywhere?</summary>
+    <p>No. There is no server. See the <a href="privacy/">privacy policy</a>.</p></details>
+  <details><summary>Can it submit the forms too?</summary>
+    <p>No, by design. See above.</p></details>
+  <details><summary>Can I use it on more than one computer?</summary>
+    <p>Yes. Because nothing syncs, you paste your spreadsheet and teach your forms separately on each
+      machine.</p></details>
+</div>
+
+<footer class="site"><div class="wrap">
+  <nav>
+    <a href="">Home</a><a href="support/">Help</a>
+    <a href="privacy/">Privacy</a><a href="terms/">Terms</a>
+  </nav>
+  <div>SheetFill fills web forms from your spreadsheet. Your data never leaves your computer.</div>
+</div></footer>
+</body></html>
