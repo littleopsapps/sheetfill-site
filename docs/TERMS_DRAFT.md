@@ -32,8 +32,8 @@ SheetFill does not include CAPTCHA handling or unattended bulk submission, and w
 ## 4. Plans and payment
 
 The free plan allows 15 filled rows per calendar month. Pro is billed monthly or annually at the
-prices shown at checkout and allows unlimited rows subject to a fair-use ceiling of 5,000 rows per
-month. Prices may change; existing subscribers will be notified before a change takes effect for them.
+prices shown at checkout and allows unlimited rows, subject to fair use. Prices may change;
+existing subscribers will be notified before a change takes effect for them.
 
 ## 5. Refunds
 

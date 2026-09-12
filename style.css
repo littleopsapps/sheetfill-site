@@ -82,3 +82,51 @@ ul.nots strong{color:var(--fg)}
 /* Legal and help pages have no hero, so they need their own top breathing room. */
 .wrap.legal{padding-top:44px}
 .wrap.legal h1{margin-bottom:10px}
+
+/* ---- Upgrade page -------------------------------------------------------- */
+/* Minimal chrome: nothing here competes with the two buttons. */
+header.site.bare .wrap{justify-content:center}
+header.site.bare nav,footer.site.bare div{display:none}
+footer.site.bare{margin-top:48px}
+footer.site.bare nav{justify-content:center;margin:0}
+footer.site.bare .wrap{display:flex;justify-content:center}
+
+.wrap.buy{padding:52px 22px 0;text-align:center;max-width:760px}
+.wrap.buy h1{font-size:clamp(28px,5vw,38px);margin:0 0 6px}
+.wrap.buy .lede{font-size:18px;margin:0 0 34px}
+
+.plans{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:0 0 30px}
+.plan{flex:1 1 280px;max-width:340px;border:1px solid var(--line);border-radius:14px;
+  padding:26px 24px 24px;background:var(--surface);position:relative;text-align:center}
+.plan.best{border-color:var(--accent);border-width:2px;padding:25px 23px 23px}
+.plan-badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);
+  background:var(--accent);color:var(--accent-fg);font-size:11px;font-weight:700;
+  letter-spacing:.07em;text-transform:uppercase;padding:4px 12px;border-radius:99px;white-space:nowrap}
+.plan-name{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.plan.best .plan-name{color:var(--accent)}
+.plan-price{font-size:42px;font-weight:800;letter-spacing:-.025em;margin:8px 0 2px}
+.plan-price small{font-size:16px;font-weight:600;color:var(--muted)}
+.plan-note{color:var(--muted);font-size:14px;margin-bottom:20px;min-height:21px}
+.btn.buy-cta{display:block;width:100%;padding:14px 18px;font-size:16px}
+.plan .btn.buy-cta.disabled{background:var(--surface);color:var(--muted);border:1px dashed var(--line)}
+
+ul.included{list-style:none;padding:0;margin:0 auto 22px;max-width:420px;text-align:left}
+ul.included li{position:relative;padding:7px 0 7px 28px;color:var(--fg)}
+ul.included li::before{content:"✓";position:absolute;left:4px;color:var(--accent);font-weight:700}
+
+.secure{color:var(--muted);font-size:14px;margin:0 0 34px}
+.stay-free{margin:0 0 10px;font-size:14px}
+.stay-free a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.stay-free a:hover{color:var(--fg)}
+
+@media (max-width:560px){
+  .wrap.buy{padding-top:36px}
+  .plans{gap:22px}
+  .plan{max-width:none}
+}
+
+/* Landing pricing cards gained their own CTAs. */
+.price{display:flex;flex-direction:column}
+.price ul{flex:1}
+.btn.price-cta{display:block;text-align:center;margin-top:16px;padding:11px 16px;font-size:15px}
+.btn.price-cta.disabled{background:var(--bg);color:var(--muted);border:1px dashed var(--line)}

@@ -95,9 +95,37 @@ function markdownToHtml(md) {
   return out.join('\n');
 }
 
-/** depth 0 = site root, depth 1 = a page in its own directory. */
-const shell = (title, desc, body, depth = 0) => {
+/**
+ * depth 0 = site root, depth 1 = a page in its own directory.
+ * chrome 'minimal' strips the nav: the upgrade page exists so that someone who
+ * has decided to pay can pay, and every extra link is a way to not do that.
+ */
+const shell = (title, desc, body, depth = 0, chrome = 'full') => {
   const up = depth === 0 ? '' : '../';
+  const header = chrome === 'minimal'
+    ? `<header class="site bare"><div class="wrap">
+  <a class="brand" href="${up}"><img class="logo" src="${LOGO}" alt=""><strong>SheetFill</strong></a>
+</div></header>`
+    : `<header class="site"><div class="wrap">
+  <a class="brand" href="${up}"><img class="logo" src="${LOGO}" alt=""><strong>SheetFill</strong></a>
+  <nav>
+    <a href="${up}">Home</a>
+    <a href="${up}support/">Help</a>
+    <a href="${up}privacy/">Privacy</a>
+    <a href="${up}terms/">Terms</a>
+  </nav>
+</div></header>`;
+  const footer = chrome === 'minimal'
+    ? `<footer class="site bare"><div class="wrap">
+  <nav><a href="${up}privacy/">Privacy</a><a href="${up}terms/">Terms</a><a href="${up}support/">Help</a></nav>
+</div></footer>`
+    : `<footer class="site"><div class="wrap">
+  <nav>
+    <a href="${up}">Home</a><a href="${up}support/">Help</a>
+    <a href="${up}privacy/">Privacy</a><a href="${up}terms/">Terms</a>
+  </nav>
+  <div>SheetFill fills web forms from your spreadsheet. Your data never leaves your computer.</div>
+</div></footer>`;
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -111,23 +139,9 @@ const shell = (title, desc, body, depth = 0) => {
 <link rel="stylesheet" href="${up}style.css">
 </head>
 <body>
-<header class="site"><div class="wrap">
-  <a class="brand" href="${up}"><img class="logo" src="${LOGO}" alt=""><strong>SheetFill</strong></a>
-  <nav>
-    <a href="${up}">Home</a>
-    <a href="${up}support/">Help</a>
-    <a href="${up}privacy/">Privacy</a>
-    <a href="${up}terms/">Terms</a>
-  </nav>
-</div></header>
+${header}
 ${body}
-<footer class="site"><div class="wrap">
-  <nav>
-    <a href="${up}">Home</a><a href="${up}support/">Help</a>
-    <a href="${up}privacy/">Privacy</a><a href="${up}terms/">Terms</a>
-  </nav>
-  <div>SheetFill fills web forms from your spreadsheet. Your data never leaves your computer.</div>
-</div></footer>
+${footer}
 </body></html>`;
 };
 
@@ -170,17 +184,30 @@ for (const p of fromDocs) {
 for (const f of readdirSync(join(here, 'pages'))) {
   const raw = readFileSync(join(here, 'pages', f), 'utf8');
   const [meta, ...rest] = raw.split('\n---\n');
-  const { title, description } = JSON.parse(meta);
+  const metaObj = JSON.parse(meta);
+  const { title, description } = metaObj;
+  const meta_ = metaObj;
   const name = f.replace('.frag.html', '.html');
   let body = rest.join('\n---\n');
-  // The site goes live before the stores approve, so an unfilled listing URL
-  // must degrade to a disabled button rather than publish a broken link.
+
+  // Pages go live before the stores approve and before the checkout variants
+  // exist, so any CTA whose URL is still a token must render as a disabled
+  // button rather than publish a link that goes nowhere.
   body = body.replace(
-    /<a class="btn([^"]*)" href="\[(EDGE|AMO)_LISTING_URL\]">([^<]*)<\/a>/g,
-    (_m, cls, store) => `<span class="btn${cls} disabled" aria-disabled="true">` +
-      `${store === 'EDGE' ? 'Edge' : 'Firefox'} — coming soon</span>`);
-  writeFileSync(join(here, name), shell(title, description, body));
-  console.log('  ' + name);
+    /<a class="([^"]*)" href="\[([A-Z_]+)\]">([^<]*)<\/a>/g,
+    (_m, cls, token, text) => {
+      const label =
+        token === 'EDGE_LISTING_URL' ? 'Edge — coming soon'
+        : token === 'AMO_LISTING_URL' ? 'Firefox — coming soon'
+        : `${text} — coming soon`;
+      return `<span class="${cls} disabled" aria-disabled="true">${label}</span>`;
+    });
+
+  const depth = meta_.dir ? 1 : 0;
+  const out = meta_.dir ? join(meta_.dir, 'index.html') : name;
+  if (meta_.dir) mkdirSync(join(here, meta_.dir), { recursive: true });
+  writeFileSync(join(here, out), shell(title, description, body, depth, meta_.chrome ?? 'full'));
+  console.log('  ' + out);
 }
 
 // --- screenshots -------------------------------------------------------------
